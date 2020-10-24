@@ -63,6 +63,7 @@ public class ProceduralLevelGenerator : EditorWindow
         EditorGUILayout.Space();*/
 
         //4 juntos
+        //Espacio para agregar los prefabs.
         EditorGUILayout.Space();
         EditorGUILayout.BeginHorizontal();
         prefab1 = (GameObject)EditorGUILayout.ObjectField("", prefab1, typeof(GameObject), false);
@@ -71,7 +72,7 @@ public class ProceduralLevelGenerator : EditorWindow
         prefab4 = (GameObject)EditorGUILayout.ObjectField("", prefab4, typeof(GameObject), false);
         EditorGUILayout.EndHorizontal();
 
-
+        //Espacio para la escala.
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Set Scale");
         EditorGUILayout.BeginHorizontal();
@@ -82,6 +83,7 @@ public class ProceduralLevelGenerator : EditorWindow
         EditorGUILayout.EndHorizontal();
 
 
+        //Escala de los prefabs que instanciamos-arreglado
         Vector3 scaleChange1 = new Vector3(scale1, scale1, scale1);
         prefab1.transform.localScale = scaleChange1;
         Vector3 scaleChange2 = new Vector3(scale2, scale2, scale2);
@@ -91,13 +93,11 @@ public class ProceduralLevelGenerator : EditorWindow
         Vector3 scaleChange4 = new Vector3(scale4, scale4, scale4);
         prefab1.transform.localScale = scaleChange1;
 
-        //esto "funciona pero escala una barbaridad, supongo que se usa un normalize o magnitude
-        //o algo así pero no lo pude descifrar todavía
 
         EditorGUILayout.Space();
 
         EditorGUI.BeginDisabledGroup(prefab1 == null || prefab2 == null || prefab3 == null || prefab4 == null);
-
+        //Posición del spawn, sólo para probar, esto se va a borrar después.
         Vector3 spawnPos1 = new Vector3(-1, 0, 0);
         Vector3 spawnPos2 = new Vector3(0, 0, 1);
         Vector3 spawnPos3 = new Vector3(1, 0, 0);
@@ -105,6 +105,9 @@ public class ProceduralLevelGenerator : EditorWindow
 
         if (GUILayout.Button("Create Level"))
         {
+            //Que se instancien como hijos de un objeto vacio también estaría bueno que
+            //pudieramos nombrar los grupos que instanciamos, porque si no nos gusta
+            //algo cuando se crea el mapa, se puede borrar y fue.
             Instantiate(prefab1, spawnPos1, Quaternion.identity);
             Instantiate(prefab2, spawnPos2, Quaternion.identity);
             Instantiate(prefab3, spawnPos3, Quaternion.identity);
