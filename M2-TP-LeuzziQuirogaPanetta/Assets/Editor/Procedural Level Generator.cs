@@ -82,8 +82,15 @@ public class ProceduralLevelGenerator : EditorWindow
         EditorGUILayout.EndHorizontal();
 
 
-        Vector3 scaleChange1 = new Vector3(0.1f*scale1, 0.01f*scale1, 0.001f*scale1);
-        prefab1.transform.localScale += scaleChange1;
+        Vector3 scaleChange1 = new Vector3(scale1, scale1, scale1);
+        prefab1.transform.localScale = scaleChange1;
+        Vector3 scaleChange2 = new Vector3(scale2, scale2, scale2);
+        prefab1.transform.localScale = scaleChange1;
+        Vector3 scaleChange3 = new Vector3(scale3, scale3, scale3);
+        prefab1.transform.localScale = scaleChange1;
+        Vector3 scaleChange4 = new Vector3(scale4, scale4, scale4);
+        prefab1.transform.localScale = scaleChange1;
+
         //esto "funciona pero escala una barbaridad, supongo que se usa un normalize o magnitude
         //o algo así pero no lo pude descifrar todavía
 
