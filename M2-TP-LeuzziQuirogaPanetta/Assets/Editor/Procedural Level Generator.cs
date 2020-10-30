@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 public class ProceduralLevelGenerator : EditorWindow
 {
-    public GameObject prefab1, prefab2, prefab3, prefab4;
+    public GameObject prefab1, prefab2, prefab3, prefab4, prefab5;
 
-    public float scale1, scale2, scale3, scale4;
+    public List<GameObject> prefabList=new List<GameObject>();
     
 
     [MenuItem("Tools/Procedural Level Generator")]
@@ -72,26 +72,34 @@ public class ProceduralLevelGenerator : EditorWindow
         prefab4 = (GameObject)EditorGUILayout.ObjectField("", prefab4, typeof(GameObject), false);
         EditorGUILayout.EndHorizontal();
 
-        //Espacio para la escala.
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField("Set Scale");
-        EditorGUILayout.BeginHorizontal();
-        scale1 = EditorGUILayout.FloatField("", scale1);
-        scale2 = EditorGUILayout.FloatField("", scale2);
-        scale3 = EditorGUILayout.FloatField("", scale3);
-        scale4 = EditorGUILayout.FloatField("", scale4);
-        EditorGUILayout.EndHorizontal();
 
 
-        //Escala de los prefabs que instanciamos-arreglado
-        Vector3 scaleChange1 = new Vector3(scale1, scale1, scale1);
-        prefab1.transform.localScale = scaleChange1;
-        Vector3 scaleChange2 = new Vector3(scale2, scale2, scale2);
-        prefab1.transform.localScale = scaleChange1;
-        Vector3 scaleChange3 = new Vector3(scale3, scale3, scale3);
-        prefab1.transform.localScale = scaleChange1;
-        Vector3 scaleChange4 = new Vector3(scale4, scale4, scale4);
-        prefab1.transform.localScale = scaleChange1;
+        if (GUILayout.Button("Add prefab vv"))
+        {
+            //if (prefabList.Count <= 25)
+            //{
+                //prefabList.Add(prefab2); AÑADIR UN ONJECTFIELD EN FALSE
+                prefab5 = (GameObject)EditorGUILayout.ObjectField("", prefab5, typeof(GameObject), false);
+
+                if (prefabList.Count <= 10)
+                {
+                    EditorGUILayout.HelpBox("Using more than 10 prefabs " +
+                        "could make the process take longer",MessageType.Info);
+                }
+            //}
+        }
+
+
+
+        /*
+        if (GUILayout.Button("Remove prefab"))
+        {
+            if (prefabList.Count>=1)
+            {
+                prefabList.RemoveAt(prefabList.Count + 1);
+            }
+        }*/
+
 
 
         EditorGUILayout.Space();
@@ -105,6 +113,7 @@ public class ProceduralLevelGenerator : EditorWindow
 
         if (GUILayout.Button("Create Level"))
         {
+            
             //Que se instancien como hijos de un objeto vacio también estaría bueno que
             //pudieramos nombrar los grupos que instanciamos, porque si no nos gusta
             //algo cuando se crea el mapa, se puede borrar y fue.
