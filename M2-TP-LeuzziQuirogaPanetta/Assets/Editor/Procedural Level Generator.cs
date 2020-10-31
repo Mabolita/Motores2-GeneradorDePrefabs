@@ -66,39 +66,35 @@ public class ProceduralLevelGenerator : EditorWindow
         //Espacio para agregar los prefabs.
         EditorGUILayout.Space();
         EditorGUILayout.BeginHorizontal();
-        prefab1 = (GameObject)EditorGUILayout.ObjectField("", prefab1, typeof(GameObject), false);
-        prefab2 = (GameObject)EditorGUILayout.ObjectField("", prefab2, typeof(GameObject), false);
-        prefab3 = (GameObject)EditorGUILayout.ObjectField("", prefab3, typeof(GameObject), false);
-        prefab4 = (GameObject)EditorGUILayout.ObjectField("", prefab4, typeof(GameObject), false);
         EditorGUILayout.EndHorizontal();
 
 
 
-        if (GUILayout.Button("Add prefab "))
+        for (int i = 1; i < 26; i++)
         {
-            //if (prefabList.Count <= 25)
-            //{
-                //prefabList.Add(prefab2); AÑADIR UN OBJECTFIELD EN FALSE
-                prefab5 = (GameObject)EditorGUILayout.ObjectField("", prefab5, typeof(GameObject), false);
+            prefabList[i] = (GameObject)EditorGUILayout.ObjectField("Prefab "+i, prefabList[i], typeof(GameObject), false);
 
-                if (prefabList.Count <= 10)
-                {
-                    EditorGUILayout.HelpBox("Using more than 10 prefabs " +
-                        "could make the process slow",MessageType.Info);
-                }
-            //}
         }
 
 
+        if (GUILayout.Button("Add another prefab"))
+        {
+            prefabList.Add(null);
+        }
 
-        /*
+        if(prefabList.Count>=11)
+        {
+            EditorGUILayout.HelpBox("Using more than 10 prefabs could slow the process.",MessageType.Warning);
+            if (prefabList.Count >= 26)
+            {
+                EditorGUILayout.HelpBox("This tool does not work with more than 25 prefabs.", MessageType.Warning);
+            }
+        }
+
         if (GUILayout.Button("Remove prefab"))
         {
-            if (prefabList.Count>=1)
-            {
-                prefabList.RemoveAt(prefabList.Count + 1);
-            }
-        }*/
+            
+        }
 
 
 
