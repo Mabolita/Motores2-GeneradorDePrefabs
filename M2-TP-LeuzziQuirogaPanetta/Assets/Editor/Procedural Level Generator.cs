@@ -74,17 +74,17 @@ public class ProceduralLevelGenerator : EditorWindow
 
 
 
-        if (GUILayout.Button("Add prefab vv"))
+        if (GUILayout.Button("Add prefab "))
         {
             //if (prefabList.Count <= 25)
             //{
-                //prefabList.Add(prefab2); AÑADIR UN ONJECTFIELD EN FALSE
+                //prefabList.Add(prefab2); AÑADIR UN OBJECTFIELD EN FALSE
                 prefab5 = (GameObject)EditorGUILayout.ObjectField("", prefab5, typeof(GameObject), false);
 
                 if (prefabList.Count <= 10)
                 {
                     EditorGUILayout.HelpBox("Using more than 10 prefabs " +
-                        "could make the process take longer",MessageType.Info);
+                        "could make the process slow",MessageType.Info);
                 }
             //}
         }
@@ -116,7 +116,7 @@ public class ProceduralLevelGenerator : EditorWindow
             
             //Que se instancien como hijos de un objeto vacio también estaría bueno que
             //pudieramos nombrar los grupos que instanciamos, porque si no nos gusta
-            //algo cuando se crea el mapa, se puede borrar y fue.
+            //algo cuando se crea el mapa, se puede borrar y listo.
             Instantiate(prefab1, spawnPos1, Quaternion.identity);
             Instantiate(prefab2, spawnPos2, Quaternion.identity);
             Instantiate(prefab3, spawnPos3, Quaternion.identity);
