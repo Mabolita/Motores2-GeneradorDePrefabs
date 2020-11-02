@@ -82,7 +82,7 @@ public class ProceduralLevelGenerator : EditorWindow
             prefabList.Add(null);
         }
 
-        if(prefabList.Count>=11)
+        if (prefabList.Count >= 11) 
         {
             EditorGUILayout.HelpBox("Using more than 10 prefabs could slow the process.",MessageType.Warning);
             if (prefabList.Count >= 26)
@@ -91,10 +91,10 @@ public class ProceduralLevelGenerator : EditorWindow
             }
         }
 
-        if (GUILayout.Button("Remove prefab"))
-        {
+        //if (GUILayout.Button("Remove prefab"))
+        //{
             
-        }
+        //}
 
 
 

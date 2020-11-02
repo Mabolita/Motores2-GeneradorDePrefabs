@@ -4,12 +4,9 @@
     <e p="C:\Users\agust\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
     <e p="C:\Users\agust\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_M2-TP-LeuzziQuirogaPanetta.1870343518.00" t="ExcludeRecursive" />
     <e p="C:\Users\agust\Desktop\Motores2-GeneradorDePrefabs\M2-TP-LeuzziQuirogaPanetta" t="IncludeRecursive">
-      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Editor" t="Include">
-          <e p="Procedural Level Generator.cs" t="Include" />
-        </e>
+        <e p="Procedural Level Generator.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Cell.cs" t="Include" />
           <e p="GridVisualizer.cs" t="Include" />

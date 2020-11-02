@@ -40,6 +40,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/MapGrid.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GridVisualizer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MapGenerator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Editor/Procedural Level Generator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Procedural Level Generator.cs" />
       </list>
     </option>
   </component>
@@ -91,6 +93,7 @@
       <workItem from="1603652510402" duration="311000" />
       <workItem from="1603653709318" duration="6086000" />
       <workItem from="1603718885639" duration="654000" />
+      <workItem from="1604276977038" duration="340000" />
     </task>
     <servers />
   </component>
