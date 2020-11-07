@@ -9,8 +9,13 @@ public class ProceduralLevelGenerator : EditorWindow
 {
     public GameObject prefab1, prefab2, prefab3, prefab4, prefab5;
 
+    Vector2 scrollPos;
     public List<GameObject> prefabList=new List<GameObject>();
-    
+    //public List<int> deleteList = new List<int>();
+    public List<int> amountList=new List<int>();
+    //public List<T> list = new List<T>();
+
+    public int deleteList;
 
     [MenuItem("Tools/Procedural Level Generator")]
     public static void OpenWindow()
@@ -68,24 +73,45 @@ public class ProceduralLevelGenerator : EditorWindow
         EditorGUILayout.BeginHorizontal();
         EditorGUILayout.EndHorizontal();
 
-
-
-        for (int i = 1; i < 26; i++)
-        {
-            prefabList[i] = (GameObject)EditorGUILayout.ObjectField("Prefab "+i, prefabList[i], typeof(GameObject), false);
-
-        }
-
-
-        if (GUILayout.Button("Add another prefab"))
+        //PONER EL BOTÓN ADD ARRIBA DE TODO
+        if (GUILayout.Button("Add another prefab") && prefabList.Count <= 24)
         {
             prefabList.Add(null);
+            amountList.Add(0);
+            deleteList = EditorGUILayout.IntField("algo list", deleteList);
+
         }
+
+
+        //PONER SCROLLBAR VERTICAL
+        for (int i = 0; i < prefabList.Count; i++)
+        {
+            EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Width(1000), GUILayout.Height(1000));
+            //EditorGUILayout.BeginV
+
+            
+            EditorGUILayout.BeginHorizontal();
+            prefabList[i] = (GameObject)EditorGUILayout.ObjectField("Prefab "+(i+1), prefabList[i], typeof(GameObject), false);
+            
+
+            amountList[i] = EditorGUILayout.IntField("",amountList[i]);
+            if (GUILayout.Button("Delete prefab"))
+            {
+                prefabList.RemoveAt(i);
+                amountList.RemoveAt(i);
+                Repaint();
+
+            }
+            EditorGUILayout.EndScrollView();
+            EditorGUILayout.EndHorizontal();
+        }
+
+        
 
         if (prefabList.Count >= 11) 
         {
             EditorGUILayout.HelpBox("Using more than 10 prefabs could slow the process.",MessageType.Warning);
-            if (prefabList.Count >= 26)
+            if (prefabList.Count >= 24)
             {
                 EditorGUILayout.HelpBox("This tool does not work with more than 25 prefabs.", MessageType.Warning);
             }
@@ -113,6 +139,7 @@ public class ProceduralLevelGenerator : EditorWindow
             //Que se instancien como hijos de un objeto vacio también estaría bueno que
             //pudieramos nombrar los grupos que instanciamos, porque si no nos gusta
             //algo cuando se crea el mapa, se puede borrar y listo.
+            //Listo-> proyecto recu
             Instantiate(prefab1, spawnPos1, Quaternion.identity);
             Instantiate(prefab2, spawnPos2, Quaternion.identity);
             Instantiate(prefab3, spawnPos3, Quaternion.identity);
